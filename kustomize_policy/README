@@ -1,0 +1,42 @@
+In order for subscriptions to PolicyGenerator to work, you need to add the user to the right clusterrolebinding
+
+https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.7/html/applications/managing-applications#granting-subscription-admin-privilege
+
+E.G.:
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: open-cluster-management:subscription-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: open-cluster-management:subscription-admin
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: system:admin
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: kube:admin
+
+Then, you need to allow the Policy object tipe in the sub:
+
+https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.7/html/applications/managing-applications#creating-allow-deny-list
+
+E.G.:
+
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  [...]
+spec:
+  allow:
+    - apiVersion: policy.open-cluster-management.io/v1
+      kinds:
+        - Policy
+        - PlacementBinding
+    - apiVersion: apps.open-cluster-management.io/v1
+      kinds:
+        - PlacementRule
