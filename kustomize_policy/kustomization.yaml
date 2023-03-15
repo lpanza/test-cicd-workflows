@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
 - dep.yaml
 
-#generators:
-#- policy-generator-config.yaml
+generators:
+  - policy-generator-config.yaml

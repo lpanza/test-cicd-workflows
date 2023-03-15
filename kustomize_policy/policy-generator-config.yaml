@@ -12,6 +12,3 @@ policies:
   - name: goofy
     manifests:
       - path: manifest-file.yaml
-  - name: donald
-    manifests:
-      - path: manifest-file2.yaml
