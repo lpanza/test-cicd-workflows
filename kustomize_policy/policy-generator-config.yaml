@@ -3,7 +3,7 @@ kind: PolicyGenerator
 metadata:
   name: policy-generator-name
 policyDefaults:
-  namespace: policies
+  namespace: local-cluster
   namespaceSelector:
     include:
     - default
