@@ -4,6 +4,9 @@ metadata:
   name: policy-generator-name
 policyDefaults:
   namespace: policies
+  namespaceSelector:
+    include:
+    - default
   placement:
     clusterSelectors:
       vendor: "OpenShift"
