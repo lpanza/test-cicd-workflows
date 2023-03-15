@@ -5,7 +5,7 @@ metadata:
   labels:
     app: pippo-alpine
   name: pippo-alpine
-  namespace: default
+  #namespace: default
 spec:
   replicas: 1
   selector:
